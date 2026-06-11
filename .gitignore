@@ -1,0 +1,16 @@
+# Compiled binary
+addu-sh
+
+# Object files
+*.o
+
+# Build artifacts
+*.out
+*.a
+
+# VS Code settings
+.vscode/
+
+# OS garbage
+.DS_Store
+Thumbs.db
