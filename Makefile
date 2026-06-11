@@ -1,19 +1,22 @@
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g
+CC      = gcc
+CFLAGS  = -Wall -Wextra -Werror -g
 
-SRC = src/main.c src/shell.c
-OBJ = $(SRC:.c=.o)
-TARGET = addu-sh
+SRC_DIR = src
+INC_DIR = include
+
+SRCS    = $(wildcard $(SRC_DIR)/*.c)
+OBJS    = $(SRCS:.c=.o)
+TARGET  = addu-sh
 
 all: $(TARGET)
 
-$(TARGET): $(OBJ)
-	$(CC) $(CFLAGS) -o $(TARGET) $(OBJ)
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
 
 clean:
-	rm -f $(OBJ) $(TARGET)
+	rm -f $(OBJS) $(TARGET)
 
 .PHONY: all clean
